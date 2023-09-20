@@ -1,0 +1,27 @@
+version: 0.2
+
+phases:
+  install:
+    on-failure: ABORT
+    runtime-versions:
+      nodejs: 18 
+    commands:
+      - echo Installing serverless CLI
+      - npm i -g serverless
+      - echo Installing npm dependencies of joaju service
+      - npm install
+  build:
+    on-failure: ABORT
+    commands:
+      - echo Deploying resource
+      - serverless deploy --stage dev
+      
+artifacts:
+  files:
+    - my-artifact/*
+  name: MyProjectArtifacts
+
+cache:
+  paths:
+    - 'node_modules/**/*'
+    
