@@ -6,8 +6,8 @@ on:
       - master
 
 jobs:
-  productionDeployment:
-    name: production-deployment
+  deploy:
+    name: deploy
     runs-on: ubuntu-latest
     environment:
       name: Production
