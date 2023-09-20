@@ -7,7 +7,7 @@ on:
 
 jobs:
   productionDeployment:
-    name: prooduction-deployment
+    name: production-deployment
     runs-on: ubuntu-latest
     environment:
       name: Production
@@ -22,7 +22,6 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: npm ci
-
     - name: Install Plugin and Deploy
       uses: serverless/github-action@v3.2
       with:
