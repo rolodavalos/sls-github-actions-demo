@@ -43,6 +43,8 @@ module.exports.createNote = async (event, context, cb) => {
       },
       ConditionExpression: "attribute_not_exists(notesId)",
     };
+
+    console.log(params)
    
     //await documentClient.put(params).promise();
     await ddbDocClient.send(new PutCommand(params));
@@ -55,6 +57,8 @@ module.exports.createNote = async (event, context, cb) => {
 module.exports.updateNote = async (event, context, cb) => {
   context.callbackWaitsForEmptyEventLoop = false;
   let notesId = event.pathParameters.id;
+
+  console.log(event.body);
   let data = JSON.parse(event.body);
 
   try {
